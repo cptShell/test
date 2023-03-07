@@ -16,5 +16,6 @@
 	}
 	&.invalid {
 		color: var(--main-deep-red);
+		border-bottom: 1px solid var(--main-deep-red);
 	}
 }

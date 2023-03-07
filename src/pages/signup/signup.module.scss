@@ -41,3 +41,36 @@
 	grid-template-columns: repeat(2, 1fr);
 	gap: 20px;
 }
+
+.bottom-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: auto;
+}
+
+.redirect-description {
+	font-size: 13px;
+	line-height: 15px;
+	font-weight: 200;
+	& > a {
+		font-weight: 500;
+		color: var(--main-deep-purple);
+	}
+}
+
+.submit-button {
+	font-family: "PT Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 18px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 154px;
+	height: 32px;
+	background-color: var(--main-deep-purple);
+	color: var(--main-deep-white);
+	cursor: pointer;
+}

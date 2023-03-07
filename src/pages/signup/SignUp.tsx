@@ -11,6 +11,7 @@ export const SignUp: FC<{}> = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
+		trigger,
 	} = useForm<SignUpDTO>({
 		resolver: joiResolver(signUpUser),
 	});
@@ -24,26 +25,48 @@ export const SignUp: FC<{}> = () => {
 			<div className={styles["aside-title"]}>
 				<h1>Sign Up</h1>
 			</div>
-			<div className={styles["signup-container"]}>
+			<form
+				onSubmit={handleSubmit(handleSignUp)}
+				className={styles["signup-container"]}
+			>
 				<div className={styles["heading-container"]}>
 					<h2>New user?</h2>
 					<p>Use the form below to create your account.</p>
 				</div>
-				<form
-					className={styles["form-grid"]}
-					onSubmit={handleSubmit(handleSignUp)}
-				>
-					<TextInput title="First Name" register={register("firstName")} />
-					<TextInput title="Last Name" register={register("lastName")} />
-					<TextInput title="E-mail" register={register("email")} />
-					<TextInput title="Password" register={register("password")} />
+				<div className={styles["form-grid"]}>
+					<TextInput
+						title="First Name"
+						register={register("firstName")}
+						isValid={!!errors.firstName}
+					/>
+					<TextInput
+						title="Last Name"
+						register={register("lastName")}
+						isValid={!!errors.lastName}
+					/>
+					<TextInput
+						title="E-mail"
+						register={register("email")}
+						isValid={!!errors.email}
+					/>
+					<TextInput
+						title="Password"
+						register={register("password")}
+						isValid={!!errors.password}
+					/>
 					<TextInput
 						title="Confirm Password"
 						register={register("confirmPassword")}
+						isValid={!!errors.confirmPassword}
 					/>
-					<button>Submit</button>
-				</form>
-			</div>
+				</div>
+				<div className={styles["bottom-container"]}>
+					<p className={styles["redirect-description"]}>
+						Have an account? <a href="#">Login</a>
+					</p>
+					<button className={styles["submit-button"]}>Complete Signup</button>
+				</div>
+			</form>
 		</div>
 	);
 };

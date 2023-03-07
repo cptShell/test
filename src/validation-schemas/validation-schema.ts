@@ -17,7 +17,7 @@ const signUpUser = Joi.object<SignUpDTO>({
 	date: Joi.date(),
 	gender: Joi.string(),
 	password: Joi.string().alphanum().required(),
-	confirmPassword: Joi.string().empty().valid(Joi.ref("password")).required(),
+	confirmPassword: Joi.string().valid(Joi.ref("password")).required(),
 });
 
 export { signUpUser };
