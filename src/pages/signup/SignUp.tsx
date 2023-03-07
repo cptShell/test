@@ -10,7 +10,6 @@ export const SignUp: FC<{}> = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-		trigger,
 	} = useForm<SignUpDTO>({
 		resolver: joiResolver(signUpUser),
 	});
@@ -40,7 +39,7 @@ export const SignUp: FC<{}> = () => {
 						title="Confirm Password"
 						register={register("confirmPassword")}
 					/>
-					<button onClick={() => handleSubmit(handleSignUp)()}>Submit</button>
+					<button>Submit</button>
 				</form>
 			</div>
 		</div>
