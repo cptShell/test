@@ -10,14 +10,14 @@ const signUpUser = Joi.object<SignUpDTO>({
 		.trim()
 		.pattern(/^[a-zA-Z]+$/)
 		.required(),
-	nationality: Joi.string()
-		.pattern(/^[a-zA-Z]+$/)
+	nationality: Joi.string().pattern(/^[a-zA-Z]+$/),
+	email: Joi.string()
+		.email({ tlds: { allow: false } })
 		.required(),
-	email: Joi.string().email().required(),
 	date: Joi.date(),
-	gender: Joi.string().required(),
+	gender: Joi.string(),
 	password: Joi.string().alphanum().required(),
-	confirmPassword: Joi.string().alphanum().required(),
+	confirmPassword: Joi.string().empty().valid(Joi.ref("password")).required(),
 });
 
 export { signUpUser };
