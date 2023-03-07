@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { SignUpDTO } from "~/common/types/signup";
 import { signUpUser } from "~/validation-schemas/validation-schema";
 import { TextInput } from "./components/components";
+import styles from "./signup.module.scss";
 
 export const SignUp: FC<{}> = () => {
 	const {
@@ -13,24 +14,25 @@ export const SignUp: FC<{}> = () => {
 	} = useForm<SignUpDTO>({
 		resolver: joiResolver(signUpUser),
 	});
-	const f = register("firstName");
 
 	const handleSignUp = (payload: SignUpDTO) => {
-		console.log(payload);
-		console.log("SUCCESS!!!");
+		console.log(payload, "SUCCESS!!!");
 	};
 
-	console.log(errors);
-
 	return (
-		<div>
-			<div className="aside-title">
+		<div className={styles["signup-wrapper"]}>
+			<div className={styles["aside-title"]}>
 				<h1>Sign Up</h1>
 			</div>
-			<div className="main-content">
-				<h2>New user?</h2>
-				<p>Use the form below to create your account.</p>
-				<form onSubmit={handleSubmit(handleSignUp)}>
+			<div className={styles["signup-container"]}>
+				<div className={styles["heading-container"]}>
+					<h2>New user?</h2>
+					<p>Use the form below to create your account.</p>
+				</div>
+				<form
+					className={styles["form-grid"]}
+					onSubmit={handleSubmit(handleSignUp)}
+				>
 					<TextInput title="First Name" register={register("firstName")} />
 					<TextInput title="Last Name" register={register("lastName")} />
 					<TextInput title="E-mail" register={register("email")} />

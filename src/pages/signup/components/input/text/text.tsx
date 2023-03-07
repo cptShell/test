@@ -1,7 +1,6 @@
 import { FC } from "react";
-import { UseFormRegister, UseFormRegisterReturn } from "react-hook-form";
-import { SignUpDTO } from "~/common/types/types";
-import { SignUp } from "~/pages/signup/SignUp";
+import { UseFormRegisterReturn } from "react-hook-form";
+import styles from "./text.module.scss";
 
 type Props = {
 	register: UseFormRegisterReturn;
@@ -10,7 +9,7 @@ type Props = {
 
 export const TextInput: FC<Props> = ({ title, register }) => {
 	return (
-		<div>
+		<div className={styles["input-container"]}>
 			<label htmlFor={register.name}>{title}</label>
 			<input type="text" {...register} />
 		</div>

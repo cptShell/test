@@ -1,0 +1,43 @@
+@import url("@fontsource/pt-sans");
+
+.signup-wrapper {
+	font-family: "Work Sans", "sans-serif";
+	display: flex;
+	width: 665px;
+	height: 480px;
+}
+
+.aside-title {
+	display: flex;
+	flex-shrink: 0;
+	flex-basis: 137px;
+	background-color: var(--main-deep-purple);
+}
+
+.signup-container {
+	display: flex;
+	flex: 1 0;
+	flex-direction: column;
+	gap: 20px;
+	padding: 38px 22px 32px;
+	background: white;
+}
+
+.heading-container {
+	& > h2 {
+		font-size: 22px;
+		line-height: 26px;
+		font-weight: var(--font-weight-bold);
+		letter-spacing: -0.46px;
+	}
+	& > p {
+		font-size: 14px;
+		line-height: 16px;
+	}
+}
+
+.form-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+}
