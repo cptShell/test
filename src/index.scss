@@ -1,0 +1,10 @@
+@import url("./assets/style/styles.scss");
+
+#root {
+	font-family: "PT Sans", sans-serif;
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--main-bg-color);
+}
