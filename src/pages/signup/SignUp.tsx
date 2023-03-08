@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useRef, useState } from "react";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { useForm } from "react-hook-form";
 import { SignUpDTO } from "~/common/types/signup";
@@ -8,8 +8,10 @@ import { DateInput, GenderInput, SelectInput } from "./components/input/input";
 import { Gender } from "~/common/enums/enums";
 import styles from "./signup.module.scss";
 import dayjs from "dayjs";
+import clsx from "clsx";
 
 export const SignUp: FC<{}> = () => {
+	const [shake, setShake] = useState(false);
 	const { register, handleSubmit, formState, getValues, setValue, reset } =
 		useForm<SignUpDTO>({
 			resolver: joiResolver(signUpUser),
@@ -23,6 +25,10 @@ export const SignUp: FC<{}> = () => {
 		console.log(payload, "SUCCESS!!!");
 		reset();
 	};
+	const handleSubmitError = () => {
+		setShake(true);
+		setTimeout(() => setShake(false), 250);
+	};
 
 	return (
 		<div className={styles["signup-wrapper"]}>
@@ -30,7 +36,7 @@ export const SignUp: FC<{}> = () => {
 				<h1>Sign Up</h1>
 			</div>
 			<form
-				onSubmit={handleSubmit(handleSignUp)}
+				onSubmit={handleSubmit(handleSignUp, handleSubmitError)}
 				className={styles["signup-container"]}
 			>
 				<div className={styles["heading-container"]}>
@@ -87,7 +93,13 @@ export const SignUp: FC<{}> = () => {
 					<p className={styles["redirect-description"]}>
 						Have an account? <a href="#">Login</a>
 					</p>
-					<button className={styles["submit-button"]}>Complete Signup</button>
+					<button
+						className={clsx(styles["submit-button"], {
+							[styles["shake"]]: shake,
+						})}
+					>
+						Complete Signup
+					</button>
 				</div>
 			</form>
 		</div>
