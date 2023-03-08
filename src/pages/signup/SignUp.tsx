@@ -5,7 +5,7 @@ import { SignUpDTO } from "~/common/types/signup";
 import { signUpUser } from "~/validation-schemas/validation-schema";
 import { TextInput } from "./components/components";
 import styles from "./signup.module.scss";
-import { GenderInput } from "./components/input/input";
+import { GenderInput, SelectInput } from "./components/input/input";
 import { Gender } from "~/common/enums/enums";
 
 export const SignUp: FC<{}> = () => {
@@ -65,6 +65,11 @@ export const SignUp: FC<{}> = () => {
 						title="Gender"
 						register={register("gender", { value: Gender.MALE })}
 						isValid={!!errors.gender}
+					/>
+					<SelectInput
+						title="Nationality"
+						register={register("nationality")}
+						isValid={!!errors.nationality}
 					/>
 				</div>
 				<div className={styles["bottom-container"]}>

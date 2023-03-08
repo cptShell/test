@@ -1,0 +1,28 @@
+.select-wrapper {
+	& > label {
+		font-size: 12px;
+		line-height: 14px;
+		font-weight: var(--font-weight-small);
+	}
+	& > select {
+		all: unset;
+		position: relative;
+		width: 100%;
+		padding: 5px 0 6px;
+		border-bottom: 1px solid var(--main-deep-white);
+		font-size: 14px;
+		line-height: 16px;
+		font-weight: var(--font-weight-bold);
+		background-image: url("../../../../../assets/img/arrow-drop.svg");
+		background-position: right center;
+		background-repeat: no-repeat;
+		&::before {
+			content: "";
+			position: absolute;
+			display: block;
+			width: 8px;
+			height: 4px;
+			right: 0;
+		}
+	}
+}
