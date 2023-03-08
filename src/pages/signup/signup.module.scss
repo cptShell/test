@@ -60,8 +60,8 @@
 .aside-title {
 	display: flex;
 	flex-shrink: 1;
-	flex-basis: 125px;
-	padding: 22px 6px;
+	flex-basis: 135px;
+	padding: 22px 1px;
 	background-color: var(--main-deep-purple);
 	@media (max-width: 420px) {
 		max-width: 125;
@@ -72,7 +72,7 @@
 
 .signup-logo {
 	width: 63px;
-	height: 162px;
+	height: 158px;
 	margin-top: auto;
 	margin-left: auto;
 	@media (max-width: 420px) {
