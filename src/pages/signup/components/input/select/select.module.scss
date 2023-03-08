@@ -1,4 +1,5 @@
 .select-wrapper {
+	position: relative;
 	& > label {
 		font-size: 12px;
 		line-height: 14px;
@@ -25,4 +26,20 @@
 			right: 0;
 		}
 	}
+	&.invalid {
+		& > input {
+			color: var(--main-deep-red);
+		}
+		border-bottom: 1px solid var(--main-deep-red);
+	}
+}
+
+.error-message {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	font-size: 12px;
+	line-height: 14px;
+	font-weight: var(--font-weight-bold);
+	color: var(--main-deep-red);
 }

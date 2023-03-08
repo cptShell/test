@@ -4,21 +4,25 @@ import { useForm } from "react-hook-form";
 import { SignUpDTO } from "~/common/types/signup";
 import { signUpUser } from "~/validation-schemas/validation-schema";
 import { TextInput } from "./components/components";
-import styles from "./signup.module.scss";
 import { DateInput, GenderInput, SelectInput } from "./components/input/input";
 import { Gender } from "~/common/enums/enums";
+import styles from "./signup.module.scss";
+import dayjs from "dayjs";
 
 export const SignUp: FC<{}> = () => {
-	const { register, handleSubmit, formState } = useForm<SignUpDTO>({
-		resolver: joiResolver(signUpUser),
-	});
+	const { register, handleSubmit, formState, getValues, setValue, reset } =
+		useForm<SignUpDTO>({
+			resolver: joiResolver(signUpUser),
+			defaultValues: {
+				date: dayjs().format("YYYY-MM-DD"),
+			},
+		});
 	const { errors } = formState;
 
 	const handleSignUp = (payload: SignUpDTO) => {
 		console.log(payload, "SUCCESS!!!");
+		reset();
 	};
-
-	console.log(errors);
 
 	return (
 		<div className={styles["signup-wrapper"]}>
@@ -37,27 +41,31 @@ export const SignUp: FC<{}> = () => {
 					<TextInput
 						title="First Name"
 						register={register("firstName")}
-						isValid={!!errors.firstName}
+						error={errors.firstName}
 					/>
 					<TextInput
 						title="Last Name"
 						register={register("lastName")}
-						isValid={!!errors.lastName}
+						error={errors.lastName}
 					/>
 					<SelectInput
 						title="Nationality"
 						register={register("nationality")}
-						isValid={!!errors.nationality}
+						error={errors.nationality}
 					/>
 					<TextInput
 						title="E-mail"
 						register={register("email")}
-						isValid={!!errors.email}
+						error={errors.email}
 					/>
 					<DateInput
 						title="Date"
-						register={register("date")}
-						isValid={!!errors.date}
+						register={register("date", { valueAsDate: true })}
+						error={errors.date}
+						formattedValue={getValues().date}
+						setDate={(date: string): void =>
+							setValue("date", date, { shouldValidate: true })
+						}
 					/>
 					<GenderInput
 						title="Gender"
@@ -67,12 +75,12 @@ export const SignUp: FC<{}> = () => {
 					<TextInput
 						title="Password"
 						register={register("password")}
-						isValid={!!errors.password}
+						error={errors.password}
 					/>
 					<TextInput
 						title="Confirm Password"
 						register={register("confirmPassword")}
-						isValid={!!errors.confirmPassword}
+						error={errors.confirmPassword}
 					/>
 				</div>
 				<div className={styles["bottom-container"]}>

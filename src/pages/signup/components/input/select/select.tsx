@@ -1,16 +1,21 @@
+import clsx from "clsx";
 import { FC } from "react";
-import { UseFormRegisterReturn } from "react-hook-form";
+import { FieldError, UseFormRegisterReturn } from "react-hook-form";
 import styles from "./select.module.scss";
 
 type Props = {
 	register: UseFormRegisterReturn;
 	title: string;
-	isValid: boolean;
+	error: FieldError | undefined;
 };
 
-export const SelectInput: FC<Props> = ({ register, title, isValid }) => {
+export const SelectInput: FC<Props> = ({ register, title, error }) => {
 	return (
-		<div className={styles["select-wrapper"]}>
+		<div
+			className={clsx(styles["select-wrapper"], {
+				[styles["invalid"]]: error,
+			})}
+		>
 			<label htmlFor={register.name}>{title}</label>
 			<select {...register} name="nationality">
 				<option value="">-- select one --</option>
@@ -209,6 +214,9 @@ export const SelectInput: FC<Props> = ({ register, title, isValid }) => {
 				<option value="zambian">Zambian</option>
 				<option value="zimbabwean">Zimbabwean</option>
 			</select>
+			{error && (
+				<span className={styles["error-message"]}>{error.message}</span>
+			)}
 		</div>
 	);
 };

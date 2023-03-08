@@ -16,7 +16,9 @@
 		padding: 5px 0 6px;
 	}
 	&.invalid {
-		color: var(--main-deep-red);
+		& > input {
+			color: var(--main-deep-red);
+		}
 		border-bottom: 1px solid var(--main-deep-red);
 	}
 }
