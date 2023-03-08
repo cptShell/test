@@ -1,0 +1,54 @@
+.input-container {
+	display: flex;
+	flex-direction: column;
+	& > label {
+		font-size: 12px;
+		line-height: 14px;
+		font-weight: var(--font-weight-small);
+	}
+}
+
+.radio {
+	position: relative;
+	display: block;
+	width: 12px;
+	height: 12px;
+	border: 0.7px solid var(--main-deep-purple);
+	border-radius: 50em;
+	cursor: pointer;
+	&:after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		display: block;
+		width: 6px;
+		height: 6px;
+		border-radius: 50em;
+		background-color: var(--main-deep-purple);
+		transform: translate(-50%, -50%);
+		transition: opacity ease 150ms;
+		opacity: 0;
+	}
+	&:checked::after {
+		opacity: 1;
+	}
+}
+
+.radio-wrapper {
+	display: flex;
+	gap: 20px;
+}
+
+.radio-container {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	height: 16px;
+	padding: 5px 0 6px;
+	& > span {
+		font-size: 14px;
+		line-height: 16px;
+		font-weight: var(--font-weight-bold);
+	}
+}
