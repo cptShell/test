@@ -1,0 +1,39 @@
+.date-wrapper {
+	& > label {
+		font-size: 12px;
+		line-height: 14px;
+		font-weight: var(--font-weight-small);
+	}
+	& > input {
+		pointer-events: none;
+		opacity: 0;
+		transform: translateY(-100%);
+	}
+}
+
+.date-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.placeholder {
+	display: flex;
+	justify-content: space-between;
+	padding: 5px 0 6px;
+	border-bottom: 1px solid var(--main-deep-white);
+	cursor: pointer;
+	& > span {
+		font-size: 14px;
+		line-height: 16px;
+		font-weight: var(--font-weight-bold);
+	}
+	&.day {
+		width: 56px;
+	}
+	&.month {
+		width: 91px;
+	}
+	&.year {
+		width: 67px;
+	}
+}

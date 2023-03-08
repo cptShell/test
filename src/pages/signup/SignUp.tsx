@@ -5,7 +5,7 @@ import { SignUpDTO } from "~/common/types/signup";
 import { signUpUser } from "~/validation-schemas/validation-schema";
 import { TextInput } from "./components/components";
 import styles from "./signup.module.scss";
-import { GenderInput, SelectInput } from "./components/input/input";
+import { DateInput, GenderInput, SelectInput } from "./components/input/input";
 import { Gender } from "~/common/enums/enums";
 
 export const SignUp: FC<{}> = () => {
@@ -13,7 +13,6 @@ export const SignUp: FC<{}> = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-		trigger,
 	} = useForm<SignUpDTO>({
 		resolver: joiResolver(signUpUser),
 	});
@@ -21,6 +20,8 @@ export const SignUp: FC<{}> = () => {
 	const handleSignUp = (payload: SignUpDTO) => {
 		console.log(payload, "SUCCESS!!!");
 	};
+
+	console.log(errors);
 
 	return (
 		<div className={styles["signup-wrapper"]}>
@@ -46,10 +47,25 @@ export const SignUp: FC<{}> = () => {
 						register={register("lastName")}
 						isValid={!!errors.lastName}
 					/>
+					<SelectInput
+						title="Nationality"
+						register={register("nationality")}
+						isValid={!!errors.nationality}
+					/>
 					<TextInput
 						title="E-mail"
 						register={register("email")}
 						isValid={!!errors.email}
+					/>
+					<DateInput
+						title="Date"
+						register={register("date")}
+						isValid={!!errors.date}
+					/>
+					<GenderInput
+						title="Gender"
+						register={register("gender", { value: Gender.MALE })}
+						isValid={!!errors.gender}
 					/>
 					<TextInput
 						title="Password"
@@ -60,16 +76,6 @@ export const SignUp: FC<{}> = () => {
 						title="Confirm Password"
 						register={register("confirmPassword")}
 						isValid={!!errors.confirmPassword}
-					/>
-					<GenderInput
-						title="Gender"
-						register={register("gender", { value: Gender.MALE })}
-						isValid={!!errors.gender}
-					/>
-					<SelectInput
-						title="Nationality"
-						register={register("nationality")}
-						isValid={!!errors.nationality}
 					/>
 				</div>
 				<div className={styles["bottom-container"]}>
