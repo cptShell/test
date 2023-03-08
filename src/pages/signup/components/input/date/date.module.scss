@@ -31,12 +31,21 @@
 	}
 	&.day {
 		width: 56px;
+		@media (max-width: 650px) {
+			width: calc(20% - 20px / 3);
+		}
 	}
 	&.month {
 		width: 91px;
+		@media (max-width: 650px) {
+			width: calc(50% - 20px / 3);
+		}
 	}
 	&.year {
 		width: 67px;
+		@media (max-width: 650px) {
+			width: calc(30% - 20px / 3);
+		}
 	}
 }
 

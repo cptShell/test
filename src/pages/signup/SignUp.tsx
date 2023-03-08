@@ -1,4 +1,6 @@
-import { FC, useRef, useState } from "react";
+import { FC, useState } from "react";
+import dayjs from "dayjs";
+import clsx from "clsx";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { useForm } from "react-hook-form";
 import { SignUpDTO } from "~/common/types/signup";
@@ -6,9 +8,8 @@ import { signUpUser } from "~/validation-schemas/validation-schema";
 import { TextInput } from "./components/components";
 import { DateInput, GenderInput, SelectInput } from "./components/input/input";
 import { Gender } from "~/common/enums/enums";
+import signUpLogo from "~/assets/img/signup-logo.svg";
 import styles from "./signup.module.scss";
-import dayjs from "dayjs";
-import clsx from "clsx";
 
 export const SignUp: FC<{}> = () => {
 	const [shake, setShake] = useState(false);
@@ -33,7 +34,7 @@ export const SignUp: FC<{}> = () => {
 	return (
 		<div className={styles["signup-wrapper"]}>
 			<div className={styles["aside-title"]}>
-				<h1>Sign Up</h1>
+				<img className={styles["signup-logo"]} src={signUpLogo} />
 			</div>
 			<form
 				onSubmit={handleSubmit(handleSignUp, handleSubmitError)}
