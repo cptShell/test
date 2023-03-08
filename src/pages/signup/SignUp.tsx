@@ -9,13 +9,10 @@ import { DateInput, GenderInput, SelectInput } from "./components/input/input";
 import { Gender } from "~/common/enums/enums";
 
 export const SignUp: FC<{}> = () => {
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm<SignUpDTO>({
+	const { register, handleSubmit, formState } = useForm<SignUpDTO>({
 		resolver: joiResolver(signUpUser),
 	});
+	const { errors } = formState;
 
 	const handleSignUp = (payload: SignUpDTO) => {
 		console.log(payload, "SUCCESS!!!");

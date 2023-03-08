@@ -18,6 +18,7 @@ export const TextInput: FC<Props> = ({ title, register, isValid }) => {
 		>
 			<label htmlFor={register.name}>{title}</label>
 			<input type="text" {...register} />
+			{isValid && <span className={styles["error-message"]}>error</span>}
 		</div>
 	);
 };
