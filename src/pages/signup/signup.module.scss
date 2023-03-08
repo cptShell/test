@@ -103,7 +103,6 @@
 		font-size: 22px;
 		line-height: 26px;
 		font-weight: var(--font-weight-bold);
-		letter-spacing: -0.46px;
 	}
 	& > p {
 		font-size: 14px;
@@ -114,7 +113,8 @@
 .form-grid {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	gap: 20px;
+	column-gap: 15px;
+	row-gap: 16px;
 	@media (max-width: 540px) {
 		grid-template-columns: repeat(1, 1fr);
 	}
